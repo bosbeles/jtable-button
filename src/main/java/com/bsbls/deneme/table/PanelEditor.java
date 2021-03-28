@@ -32,7 +32,9 @@ public class PanelEditor extends AbstractCellEditor
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gc = new GridBagConstraints();
 
+
         int space = 5;
+        // Flat LAF'ta renderer ile editor arasında kayma oluyor.
         if (UIManager.getLookAndFeel().getName().contains("Flat")) {
             space = 6;
         }

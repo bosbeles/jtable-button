@@ -14,6 +14,8 @@ public class PanelRenderer implements TableCellRenderer {
     private JButton send;
     private JButton settings;
     private JButton delete;
+    private int size = 20;
+    private Color primary = Color.BLACK;
 
     public PanelRenderer() {
         send = createButton(FontAwesome.PLAY);
@@ -41,7 +43,7 @@ public class PanelRenderer implements TableCellRenderer {
 
     private JButton createButton(IconCode iconCode) {
         JButton button = new JButton();
-        button.setIcon(IconFontSwing.buildIcon(iconCode, 20, Color.BLACK));
+        button.setIcon(IconFontSwing.buildIcon(iconCode, size, primary));
         button.setFocusable(false);
         button.setContentAreaFilled(false);
         button.setFocusPainted(false);

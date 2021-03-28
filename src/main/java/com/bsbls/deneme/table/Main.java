@@ -9,7 +9,6 @@ import jiconfont.swing.IconFontSwing;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class Main {
 
@@ -52,15 +51,6 @@ public class Main {
                 }
             });
 
-
-            Action action = new AbstractAction("Send") {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    int row = table.convertRowIndexToModel(table.getEditingRow());
-                    System.out.println(row);
-                }
-            };
-            JButton button = new JButton(action);
             table.setDefaultEditor(JPanel.class, new PanelEditor());
             table.setDefaultRenderer(JPanel.class, new PanelRenderer());
             panel.add(new JScrollPane(table), BorderLayout.CENTER);

@@ -19,8 +19,6 @@ public class PanelEditor extends AbstractCellEditor
     private JButton delete;
     private int currentRow;
     private JTable table;
-    private Color primary = Color.BLACK;
-    private Color secondary = Color.WHITE;
 
 
     public PanelEditor() {

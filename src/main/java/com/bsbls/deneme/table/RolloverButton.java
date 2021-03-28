@@ -14,8 +14,8 @@ public class RolloverButton extends JButton {
     private Color secondary = Color.WHITE;
 
     public RolloverButton(IconCode iconCode, int size) {
-        Icon primaryIcon = IconFontSwing.buildIcon(iconCode, 20, primary);
-        Icon secondaryIcon = IconFontSwing.buildIcon(iconCode, 20, secondary);
+        Icon primaryIcon = IconFontSwing.buildIcon(iconCode, size, primary);
+        Icon secondaryIcon = IconFontSwing.buildIcon(iconCode, size, secondary);
 
         setIcon(primaryIcon);
         setRolloverIcon(secondaryIcon);

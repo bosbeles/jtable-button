@@ -42,8 +42,6 @@ public class PanelRenderer implements TableCellRenderer {
     private JButton createButton(IconCode iconCode) {
         JButton button = new JButton();
         button.setIcon(IconFontSwing.buildIcon(iconCode, 20, Color.BLACK));
-        button.setRolloverIcon(IconFontSwing.buildIcon(iconCode, 20, Color.WHITE));
-        button.setRolloverSelectedIcon(button.getRolloverIcon());
         button.setFocusable(false);
         button.setContentAreaFilled(false);
         button.setFocusPainted(false);

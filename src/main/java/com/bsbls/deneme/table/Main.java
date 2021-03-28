@@ -64,7 +64,7 @@ public class Main {
             table.setDefaultEditor(JPanel.class, new PanelEditor());
             table.setDefaultRenderer(JPanel.class, new PanelRenderer());
             panel.add(new JScrollPane(table), BorderLayout.CENTER);
-            RolloverTables.install(table);
+            InstantEditingSupportUtils.install(table);
             return panel;
         });
     }

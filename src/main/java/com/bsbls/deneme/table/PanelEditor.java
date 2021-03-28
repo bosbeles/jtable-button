@@ -1,8 +1,6 @@
 package com.bsbls.deneme.table;
 
-import jiconfont.IconCode;
 import jiconfont.icons.font_awesome.FontAwesome;
-import jiconfont.swing.IconFontSwing;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -13,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.time.Instant;
 
 public class PanelEditor extends AbstractCellEditor
-        implements TableCellEditor {
+        implements TableCellEditor, InstantEditingSupportUtils.InstantEditingSupport {
 
     private JPanel panel;
     private JButton send;
@@ -21,13 +19,16 @@ public class PanelEditor extends AbstractCellEditor
     private JButton delete;
     private int currentRow;
     private JTable table;
+    private Color primary = Color.BLACK;
+    private Color secondary = Color.WHITE;
 
 
     public PanelEditor() {
 
-        send = createButton(FontAwesome.PLAY);
-        settings = createButton(FontAwesome.COG);
-        delete = createButton(FontAwesome.TIMES);
+
+        send = new RolloverButton(FontAwesome.PLAY, 20);
+        settings = new RolloverButton(FontAwesome.COG, 20);
+        delete = new RolloverButton(FontAwesome.TIMES, 20);
 
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gc = new GridBagConstraints();
@@ -58,40 +59,6 @@ public class PanelEditor extends AbstractCellEditor
 
         });
 
-        send.addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                send.setIcon(IconFontSwing.buildIcon(FontAwesome.PLAY, 20, Color.WHITE));
-            }
-
-        });
-
-        send.setRolloverEnabled(false);
-        send.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                send.setIcon(IconFontSwing.buildIcon(FontAwesome.PLAY, 20, Color.BLACK));
-            }
-
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                if (send.contains(e.getPoint())) {
-                    send.setIcon(IconFontSwing.buildIcon(FontAwesome.PLAY, 20, Color.WHITE));
-                }
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                send.setIcon(IconFontSwing.buildIcon(FontAwesome.PLAY, 20, Color.WHITE));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                send.setIcon(IconFontSwing.buildIcon(FontAwesome.PLAY, 20, Color.BLACK));
-            }
-        });
 
         settings.addActionListener(e -> {
             selectRow();
@@ -135,19 +102,6 @@ public class PanelEditor extends AbstractCellEditor
         if (currentRow < table.getRowCount()) {
             table.getSelectionModel().setSelectionInterval(currentRow, currentRow);
         }
-    }
-
-    private JButton createButton(IconCode iconCode) {
-        JButton button = new JButton();
-        button.setIcon(IconFontSwing.buildIcon(iconCode, 20, Color.BLACK));
-        button.setRolloverIcon(IconFontSwing.buildIcon(iconCode, 20, Color.WHITE));
-        button.setRolloverEnabled(true);
-        button.setFocusable(false);
-        button.setContentAreaFilled(false);
-        button.setFocusPainted(false);
-        button.setFocusable(false);
-        button.setRequestFocusEnabled(false);
-        return button;
     }
 
 

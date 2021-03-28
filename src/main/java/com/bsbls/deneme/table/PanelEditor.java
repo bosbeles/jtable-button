@@ -31,7 +31,12 @@ public class PanelEditor extends AbstractCellEditor
 
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gc = new GridBagConstraints();
-        gc.insets = new Insets(4, 0, 3, 6);
+
+        int space = 5;
+        if (UIManager.getLookAndFeel().getName().contains("Flat")) {
+            space = 6;
+        }
+        gc.insets = new Insets(4, 0, 3, space);
 
         Insets margin = new Insets(0, 0, 0, 0);
         send.setMargin(margin);

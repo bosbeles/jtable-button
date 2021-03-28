@@ -25,6 +25,8 @@ public class FontLabel extends JLabel {
         GuiTester.test("Light", f -> {
             JComboBox<IconCode> combo = new JComboBox<>(FontAwesome.values());
             JSlider slider = new JSlider(0, 150, 20);
+            JColorChooser colorChooser = new JColorChooser(Color.RED);
+            colorChooser.setPreviewPanel(new JPanel());
 
 
             IconFontSwing.register(FontAwesome.getIconFont());
@@ -44,20 +46,30 @@ public class FontLabel extends JLabel {
                 f.pack();
             });
 
-            JPanel north = new JPanel();
-            north.add(combo);
-            north.add(slider);
-            JPanel center = new JPanel();
-            center.add(comp);
+            colorChooser.getSelectionModel().addChangeListener(e -> {
+                Color color = colorChooser.getColor();
+                comp.setForeground(color);
+            });
 
-            JPanel panel = new JPanel(new BorderLayout());
-            panel.add(north, BorderLayout.NORTH);
-            panel.add(center, BorderLayout.CENTER);
+
+            JPanel panel = new JPanel(new GridBagLayout());
+            GridBagConstraints gc = new GridBagConstraints();
+            gc.gridx = 0;
+            gc.gridy = 0;
+            panel.add(combo, gc);
+            gc.gridx++;
+            panel.add(slider, gc);
+            gc.gridy = 1;
+            gc.gridx = 0;
+            gc.gridwidth = 2;
+            panel.add(colorChooser, gc);
+            gc.gridy++;
+            panel.add(comp, gc);
 
             Executors.newSingleThreadScheduledExecutor().scheduleWithFixedDelay(() -> EventQueue.invokeLater(() -> {
                 int selectedIndex = combo.getSelectedIndex();
                 combo.setSelectedIndex((selectedIndex + 1) % combo.getItemCount());
-            }), 1000, 100, TimeUnit.MILLISECONDS);
+            }), 1000, 200, TimeUnit.MILLISECONDS);
 
             return panel;
         });

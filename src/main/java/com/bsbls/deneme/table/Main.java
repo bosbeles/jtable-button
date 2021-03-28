@@ -14,8 +14,10 @@ public class Main {
 
 
     public static void main(String[] args) {
+
         // Nimbus, Light, Dark, Metal
         GuiTester.test("Light", f -> {
+            f.setTitle("Button Panel Renderer");
             FlatInspector.install("ctrl shift alt X");
             FlatUIDefaultsInspector.install("ctrl shift alt Y");
             IconFontSwing.register(FontAwesome.getIconFont());

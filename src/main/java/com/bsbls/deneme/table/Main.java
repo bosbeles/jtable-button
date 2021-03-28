@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Nimbus, Light, Dark, Metal
-        GuiTester.test("Nimbus", f -> {
+        GuiTester.test("Light", f -> {
             FlatInspector.install("ctrl shift alt X");
             FlatUIDefaultsInspector.install("ctrl shift alt Y");
             IconFontSwing.register(FontAwesome.getIconFont());
